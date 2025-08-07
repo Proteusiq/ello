@@ -10,5 +10,4 @@ chat = partial(
     stream=True,
     top_p=0.9,
     temperature=0.2,
-    
 )

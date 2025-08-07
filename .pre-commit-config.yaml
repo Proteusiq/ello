@@ -14,5 +14,10 @@ repos:
         entry: .venv/bin/mypy
         language: system
         types: [python]
-        args: [.]
+        args: [src/]
         pass_filenames: false
+  - repo: https://github.com/rvben/rumdl-pre-commit
+    rev: v0.0.99 
+    hooks:
+      - id: rumdl
+        args: [--fix]

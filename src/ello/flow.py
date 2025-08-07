@@ -29,5 +29,5 @@ messages = [{"content": query, "role": "user"}]
 response = chat(messages=messages)
 
 for chunk in response:
-    chunkie = chunk.choices[0].delta.content # type: ignore
+    chunkie = chunk.choices[0].delta.content  # type: ignore
     print(chunkie, end="", flush=True) if chunkie else print()

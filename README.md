@@ -1,11 +1,12 @@
 # ello
+
 Let's talk Ello
 
-## TODO 
+## TODO  
 - MCP -> qdrant (search: chunkie late chunking) - retrieve endpoint (knowledge base)
 - dlt -> arXiv
 - image
-- audio 
+- audio  
 - profile
 - themes
 - research

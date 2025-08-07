@@ -42,3 +42,10 @@ pythonpath = ["src", "."]
 markers = [
     "integration: marks tests that require external services (deselect with '-m \"not integration\"')",
 ]
+[tool.rumdl]
+# Global options at root level
+line-length = 180
+disable = ["MD033"]
+include = ["docs/*.md", "README.md"]
+exclude = [".git",]
+ignore-gitignore = false
