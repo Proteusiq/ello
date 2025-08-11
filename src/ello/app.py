@@ -42,15 +42,13 @@ async def on_message(message: cl.Message):
     message_history = cl.user_session.get("message_history", [])
     has_thinking, response = await reasoning_step(message.content)
     final_message = cl.Message(content="")
-
+    await final_message.send()
     ai_response = ""
     async for chunkie in response:
         chunk = chunkie.choices[0].delta 
-        if has_thinking and chunk.content != "</think>":
-            continue
-        elif chunk:
+        if has_thinking:
             await final_message.stream_token(chunk.content)
-            ai_response += chunk.context
+            ai_response += chunk.content or "" 
         else:
             await final_message.update()
     if ai_response:
