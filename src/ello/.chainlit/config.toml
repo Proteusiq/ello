@@ -69,11 +69,11 @@ reaction_on_message_received = false
 
 [UI]
 # Name of the assistant.
-name = "Assistant"
+name = "Ello"
 
 # default_theme = "dark"
 
-# layout = "wide"
+layout = "wide"
 
 # default_sidebar_state = "open"
 
@@ -85,14 +85,14 @@ cot = "full"
 
 # Specify a CSS file that can be used to customize the user interface.
 # The CSS file can be served from the public directory or via an external link.
-# custom_css = "/public/test.css"
+custom_css = "/public/styles.css"
 
 # Specify additional attributes for a custom CSS file
 # custom_css_attributes = "media=\"print\""
 
 # Specify a JavaScript file that can be used to customize the user interface.
 # The JavaScript file can be served from the public directory.
-# custom_js = "/public/test.js"
+custom_js = "/public/script.js"
 
 # The style of alert boxes. Can be "classic" or "modern".
 alert_style = "classic"
