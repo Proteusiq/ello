@@ -1,10 +1,10 @@
 from functools import partial
 
-from litellm import completion
+from litellm import acompletion
 
 LLM_MODEL_NAME: str = "ollama/qwen3:latest"
 chat = partial(
-    completion,
+    acompletion,
     model=LLM_MODEL_NAME,
     api_base="http://localhost:11434",
     stream=True,
