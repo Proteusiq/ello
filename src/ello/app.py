@@ -1,5 +1,4 @@
 import chainlit as cl
-from chainlit.auth import create_jwt
 from ello.client import chat
 
 
