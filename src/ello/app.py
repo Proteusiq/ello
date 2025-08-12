@@ -40,7 +40,7 @@ async def reasoning_step(user_message: str):
 async def on_message(message: cl.Message):
     message_history = cl.user_session.get("message_history", [])
     has_thinking, response = await reasoning_step(message.content)
-    final_message = cl.Message(content="")
+    final_message = cl.Message(content="", author="Ello")
     await final_message.send()
     ai_response = ""
     async for chunkie in response:
