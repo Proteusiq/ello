@@ -1,5 +1,9 @@
 # Welcome to Ello! 
 
+<img width="612" height="408" alt="ello" src="https://github.com/user-attachments/assets/6a624204-52c8-474e-ae06-fbd7401bf7c2" />
+
+> Inspired by Netflix Pantheon Animation series on Uploaded Intelligence
+
 Hi there 👋, I am **Ello** - 💬 intelligent conversational interface. This project aims to create a comprehensive Assistant with advanced knowledge retrieval and multimodal capabilities using only open source tools.
 
 ## What is Ello? 
