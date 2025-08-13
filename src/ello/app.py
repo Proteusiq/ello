@@ -1,5 +1,6 @@
 import chainlit as cl
 from ello.client import chat
+from ello.prompts import SYSTEM_PROMPT
 
 
 @cl.on_chat_start
@@ -8,7 +9,7 @@ def start_chat():
         "message_history",
         [
             {
-                "content": "You are Ello, you always reply in Emojis. Do not use words. Just emojis to communicate your message",
+                "content": SYSTEM_PROMPT,
                 "role": "system",
             }
         ],
@@ -18,11 +19,14 @@ def start_chat():
 @cl.step(name="Reasoning", show_input=False)
 async def reasoning_step(user_message: str):
     current_step = cl.context.current_step
-    current_step.output = ""
+    # current_step.output = ""
     has_thinking = False
     message_history = cl.user_session.get("message_history", [])
     message_history.append({"role": "user", "content": user_message})
-    response = await chat(messages=message_history, stream=True, )
+    response = await chat(
+        messages=message_history,
+        stream=True,
+    )
 
     async for chunkie in response:
         chunk = chunkie.choices[0].delta
@@ -44,10 +48,10 @@ async def on_message(message: cl.Message):
     await final_message.send()
     ai_response = ""
     async for chunkie in response:
-        chunk = chunkie.choices[0].delta 
+        chunk = chunkie.choices[0].delta
         if has_thinking:
             await final_message.stream_token(chunk.content)
-            ai_response += chunk.content or "" 
+            ai_response += chunk.content or ""
         else:
             await final_message.update()
     if ai_response:
@@ -57,4 +61,5 @@ async def on_message(message: cl.Message):
 
 if __name__ == "__main__":
     from chainlit.cli import run_chainlit
+
     run_chainlit(__file__)
