@@ -30,12 +30,11 @@ Ignore the story. Randomly guess a number between 1-100:
 
 messages = [{"content": query, "role": "user"}]
 async def talk(messages):
-    print("[Start] Ollama Engines ...")
     response = await chat(messages=messages)
 
     async for chunk in response:
         chunkie = chunk.choices[0].delta.content  or "" # type: ignore
         print(chunkie, end="", flush=True)
-
+    print()
 if __name__ == "__main__":
     asyncio.run(talk(messages=messages))
