@@ -1,6 +1,7 @@
+import asyncio
 from textwrap import dedent
 from ello.client import chat
-import asyncio
+
 
 
 query = dedent("""
@@ -26,16 +27,15 @@ Sven stepped ashore, not to find answers, but to live into the question.
 
 Ignore the story. Randomly guess a number between 1-100:
 """)
+
 messages = [{"content": query, "role": "user"}]
-
-
-async def call(messages):
+async def talk(messages):
+    print("[Start] Ollama Engines ...")
     response = await chat(messages=messages)
 
-    async for chunk in response:  # type: ignore
-        chunkie = chunk.choices[0].delta.content  # type: ignore
-        print(chunkie, end="", flush=True) if chunkie else print()
-
+    async for chunk in response:
+        chunkie = chunk.choices[0].delta.content  or "" # type: ignore
+        print(chunkie, end="", flush=True)
 
 if __name__ == "__main__":
-    asyncio.run(call(messages=messages))
+    asyncio.run(talk(messages=messages))
