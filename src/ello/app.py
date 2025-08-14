@@ -3,6 +3,21 @@ from ello.client import chat
 from ello.prompts import SYSTEM_PROMPT
 
 
+
+
+
+@cl.oauth_callback
+def oauth_callback(
+  provider_id: str,
+  token: str,
+  raw_user_data: dict[str, str],
+  default_user: cl.User,
+) -> cl.User | None :
+    return cl.User(
+        identifier=default_user.identifier,
+        metadata={"profile": "Profile"}
+    )
+
 @cl.on_chat_start
 def start_chat():
     cl.user_session.set(
