@@ -3,7 +3,6 @@ from textwrap import dedent
 from ello.client import chat
 
 
-
 query = dedent("""
 Sven stood at the dock, the letter in his coat pocket soft from rereading.
 “If you ever feel lost, cross the sea. I did.” His father’s final words.
@@ -29,12 +28,16 @@ Ignore the story. Randomly guess a number between 1-100:
 """)
 
 messages = [{"content": query, "role": "user"}]
+
+
 async def talk(messages):
     response = await chat(messages=messages)
 
     async for chunk in response:
-        chunkie = chunk.choices[0].delta.content  or "" # type: ignore
+        chunkie = chunk.choices[0].delta.content or ""  # type: ignore
         print(chunkie, end="", flush=True)
     print()
+
+
 if __name__ == "__main__":
     asyncio.run(talk(messages=messages))
